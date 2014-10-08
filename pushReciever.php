@@ -18,20 +18,7 @@ if (empty($payload->commits)){
 } else {
   foreach ($payload->commits as $commit) {
     $branch = $commit->branch;
-    if ($branch === 'production' || isset($commit->branches) && in_array('production', $commit->branches)) {
-      $update = true;
-      break;
-    }
-  }
+      }
 }
 
-if ($update) {
-  // Do a git checkout to the web root
-  exec('cd ' . $repo_dir . ' && ' . $git_bin_path  . ' fetch');
-  exec('cd ' . $repo_dir . ' && GIT_WORK_TREE=' . $web_root_dir . ' ' . $git_bin_path  . ' checkout -f');
-
-  // Log the deployment
-  $commit_hash = shell_exec('cd ' . $repo_dir . ' && ' . $git_bin_path  . ' rev-parse --short HEAD');
-  file_put_contents('deploy.log', date('m/d/Y h:i:s a') . " Deployed branch: " .  $branch . " Commit: " . $commit_hash . "\n", FILE_APPEND);
-}
 ?>
