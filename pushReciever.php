@@ -6,12 +6,13 @@ $git_bin_path = 'git';
 $update = false;
 $payload = urldecode(file_get_contents('php://input'));
 $tobedecoded=substr($payload,8,strlen($payload));
-error_log(json_decode($tobedecoded));
-if (empty($payload->commits)){
+$decoded=json_decode($tobedecoded);
+error_log($decoded->commits);
+/*if (empty($payload->commits)){
   $update = true;
 } else {
   foreach ($payload->commits as $commit) {
     $branch = $commit->branch;
       }
-}
+}*/
 ?>
