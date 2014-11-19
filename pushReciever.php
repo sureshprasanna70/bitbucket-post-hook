@@ -5,7 +5,7 @@ $web_root_dir = '/home/<username>/www';
 $git_bin_path = 'git';
 $update = false;
 $payload = urldecode(file_get_contents('php://input'));
-error_log(substr($payload,7,strlen($payload)));
+error_log(substr($payload,8,strlen($payload)));
 if (empty($payload->commits)){
   $update = true;
 } else {
