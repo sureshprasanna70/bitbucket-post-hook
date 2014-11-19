@@ -7,5 +7,5 @@ $update = false;
 $payload = urldecode(file_get_contents('php://input'));
 $tobedecoded=substr($payload,8,strlen($payload));
 $decoded=json_decode($tobedecoded);
-
+error_log($_POST["payload"]);
 ?>
