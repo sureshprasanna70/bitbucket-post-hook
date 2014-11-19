@@ -7,12 +7,5 @@ $update = false;
 $payload = urldecode(file_get_contents('php://input'));
 $tobedecoded=substr($payload,8,strlen($payload));
 $decoded=json_decode($tobedecoded);
-error_log($decoded->canon_url);
-/*if (empty($payload->commits)){
-  $update = true;
-} else {
-  foreach ($payload->commits as $commit) {
-    $branch = $commit->branch;
-      }
-}*/
+
 ?>
